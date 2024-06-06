@@ -1,15 +1,15 @@
 import "./App.css";
 import * as yup from "yup";
-import { userSchema } from "./Validations/UserValidation";
+import { userSchema } from "./validations/UserValidation";
 function App() {
-  const createUser = (event) => {
+  const createUser = async (event) => {
     event.preventDefault();
     let formData = {
       name: event.target[0].value,
       email: event.target[1].value,
       password: event.target[2].value,
     };
-    console.log(formData);
+    const isvalid = await userSchema.isValid(formData);
   };
   return (
     <div className="App">
